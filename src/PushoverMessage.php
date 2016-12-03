@@ -75,6 +75,14 @@ class PushoverMessage
     /**
      * Message priorities.
      */
+
+    /**
+     * Enable html in messages (optional)
+     *
+     * @var integer;
+     */
+    public $html;
+
     const LOWEST_PRIORITY = -2;
     const LOW_PRIORITY = -1;
     const NORMAL_PRIORITY = 0;
@@ -171,6 +179,18 @@ class PushoverMessage
     }
 
     /**
+     * Enable html parsing in messages
+     *
+     * @return $this
+     */
+    public function html()
+    {
+        $this->html = 1;
+
+        return $this;
+    }
+
+    /**
      * Set the priority of the Pushover message.
      * Retry and expire are mandatory when setting the priority to emergency.
      *
@@ -260,6 +280,7 @@ class PushoverMessage
             'sound' => $this->sound,
             'retry' => $this->retry,
             'expire' => $this->expire,
+            'html' => $this->html,
         ];
     }
 
